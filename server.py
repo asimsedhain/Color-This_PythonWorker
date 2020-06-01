@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 @app.route("/", methods = ["POST", "GET"])
 def bas():
-	return jsonify(hello="world")
+	return jsonify(testing="Testing")
 
 if __name__ == "__main__":
 	
