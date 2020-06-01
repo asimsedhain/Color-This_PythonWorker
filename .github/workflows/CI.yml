@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  Python_CI:
+    runs-on: ubuntu-latest
+    env:
+      working-directory: ./worker
+    strategy:
+      matrix:
+        python-version: [3.8]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install all the dependencies
+        run: pip install -r requirements.txt
+      - name: Installing Tensorflow for the CI pipeline seperately
+        run: pip install tensorflow==2.2
+      - name: Running Python Unit Test
+        run: python -m unittest
