@@ -14,7 +14,7 @@ from util import processing
 
 # needed for azure to not freak out
 import subprocess
-subprocess.Popen(["python", "worker.py"])
+subprocess.Popen(["python", "server.py"])
 # needed for azure to not freak out
 
 list_name = os.environ["LIST_NAME"]
