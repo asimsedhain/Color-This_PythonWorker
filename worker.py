@@ -11,13 +11,19 @@ import json
 import traceback
 from util import processing
 
-list_name = os.getenv("LIST_NAME")
-DB_URI = os.getenv("DB_URI")
-DB_NAME = os.getenv("DB_NAME")
-DB_COLLECTION = os.getenv("DB_COLLECTION")
-REDIS_URL = os.getenv("REDIS_URL")
-REDIS_PORT = os.getenv("REDIS_PORT")
-REDIS_PASSWORD = os.getenv("REDIS_PASSWORD")
+
+# needed for azure to not freak out
+import subprocess
+subprocess.Popen(["python", "worker.py"])
+# needed for azure to not freak out
+
+list_name = os.environ["LIST_NAME"]
+DB_URI = os.environ["DB_URI"]
+DB_NAME = os.environ["DB_NAME"]
+DB_COLLECTION = os.environ["DB_COLLECTION"]
+REDIS_URL = os.environ["REDIS_URL"]
+REDIS_PORT = os.environ["REDIS_PORT"]
+REDIS_PASSWORD = os.environ["REDIS_PASSWORD"]
 
 
 
