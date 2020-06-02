@@ -25,10 +25,10 @@ jobs:
         password: ${{ secrets.REGISTRY_PASSWORD }}
     
     - run: |
-        docker build . -t asedhain/colorthis_worker:${{ github.sha }}
-        docker push asedhain/colorthis_worker:${{ github.sha }}
+        docker build . -t ${{ secrets.REGISTRY_USERNAME }}/colorthis_worker:${{ github.sha }}
+        docker push ${{ secrets.REGISTRY_USERNAME }}/colorthis_worker:${{ github.sha }}
       
     - uses: azure/webapps-deploy@v2
       with:
         app-name: 'colorthis-worker'
-        images: 'asedhain/colorthis_worker:${{ github.sha }}'
+        images: '${{ secrets.REGISTRY_USERNAME }}/colorthis_worker:${{ github.sha }}'
