@@ -13,6 +13,7 @@ from util import processing
 
 
 # needed for azure to not freak out
+# redeploy
 import subprocess
 subprocess.Popen(["python", "server.py"])
 # needed for azure to not freak out
