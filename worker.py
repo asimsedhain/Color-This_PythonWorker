@@ -12,19 +12,11 @@ import traceback
 from util import processing
 
 
-# needed for azure to not freak out
-# redeploy
-import subprocess
-subprocess.Popen(["python", "server.py"])
-# needed for azure to not freak out
 
 list_name = os.environ["LIST_NAME"]
 DB_URI = os.environ["DB_URI"]
 DB_NAME = os.environ["DB_NAME"]
 DB_COLLECTION = os.environ["DB_COLLECTION"]
-REDIS_URL = os.environ["REDIS_URL"]
-REDIS_PORT = os.environ["REDIS_PORT"]
-REDIS_PASSWORD = os.environ["REDIS_PASSWORD"]
 
 
 
@@ -38,7 +30,7 @@ print(f"{datetime.now()}: Model Loaded", flush=True)
 
 
 print(f"{datetime.now()}: Connecting to Queue", flush=True)
-redis_client = redis.Redis(host = REDIS_URL, port=REDIS_PORT, password=REDIS_PASSWORD)
+redis_client = redis.Redis(host="redis", port="6379")
 finished_list = redis_client
 print(f"{datetime.now()}: Connected to Queue", flush=True)
 
